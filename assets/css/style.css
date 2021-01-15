@@ -1,0 +1,7 @@
+.container {
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+    transition: 0.3s;
+    width: 60vw;
+}
