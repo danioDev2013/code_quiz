@@ -15,7 +15,8 @@
 h1 {
     font-weight: bold;
 }
-.start-button {
+.button,
+.submit-button {
     background: radial-gradient(circle, rgb(107, 80, 182) 0%, rgba(55, 18, 88, 0.954) 100%);
     border-radius: 8px;
     color: hsl(210, 14%, 95%);

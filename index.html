@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!--Navbar with timer hidden, highscore link-->
     <header class="navbar navbar-light">
         <p id="high-score" class="navbar nav-item nav-link">View Highscores</p>
         <div class="column" id="timer" style="visibility: hidden;">
@@ -20,13 +21,18 @@
         
     </header>
     <main>
+        <!--start with directions-->
         <section class="container">
-            <h1 id="question">Challenge Questions</h1>
+            <h1 id="question-ask">Challenge Questions</h1>
             <p id="question-answer">This is a JavaScript quiz. It contains 10 questions, multiple choice and input. Test your knowledge. 
                 Try to answer all questions in 5 minute. 30 seconds per question. Click start to begin. 
             </p>
-            <button class="start-button">Start</button>
+            <button class="button" id="button" value="Button Text">Start</button>
         </section>
+
+       
+
+
     </main>
     <!--link to js-->
     <script src="assets/js/script.js"></script>
