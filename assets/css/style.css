@@ -9,7 +9,9 @@
 #timer {
     color: rgb(55, 18, 88);
     font-weight: bold;
+    padding: 0 10px 0 0;
 }
+
 h1 {
     font-weight: bold;
 }
