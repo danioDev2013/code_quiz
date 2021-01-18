@@ -30,3 +30,20 @@ h1 {
     transition-timing-function: linear;
     margin-top: 0.6em;
   }
+
+  #questions {
+      display: none;
+  }
+  .question-btns {
+      text-align: left;
+  }
+
+  #results {
+      display: none;
+  }
+  #score {
+    display: none;
+  }
+  #timer {
+      display: none;
+  }

@@ -102,23 +102,60 @@ var quizQuestions = [
 
 
 var highScore = document.querySelector('#high-score');
-var quizTimer = document.querySelector('#time-quiz');
-var questTimer = document.querySelector('#time-question');
 var questionAsk = document.querySelector('#question');
-var answersQues = document.querySelector('#question-answer')
+var answersQues = document.querySelector('#answer')
 
-var startBtn = document.querySelector('#start-button');
-var submitBtn = document.querySelector('#submit-button');
+var button = document.querySelector("#button");
 
 
 var timers = document.querySelector('#timer');
+var isWin = false;
+var quizTime = 1000;
+var quesTime = 60;
+const  quizTimer = document.querySelector("#time-quiz");
+const quesTimer = document.querySelector("#time-question");
+var output = [];
+var i = 0;
 
+button.addEventListener("click", startQuiz);
 
-button.addEventListener("click", replaceButtonText);
-
-function replaceButtonText() {
+function startQuiz() {
+    //changes button to submit
     document.getElementById("button").innerHTML = "Submit";
-    document.getElementById("question-ask").innerHTML = "Question";
-    document.getElementById("question-answer").innerHTML="answers";
+    //document.getElementById("question-ask").innerHTML = "Question";
+    //timer is now visible
     document.getElementById("timer").style.visibility = "visible";
+
+    startTimer();
+    questionRender();
+
+    
 }
+
+
+
+// The setTimer function starts and stops the timer
+function startTimer() {
+    // Sets timer
+    var quizTimerInterval = setInterval(function() {
+      quizTime--;
+      quizTimer.textContent = quizTime;
+      for(i = 1000; i < quizQuestions.length; i--) {
+          if(quizTime === 0) {
+              clearInterval(quizTimerInterval);
+              return;
+          }
+      }
+    }, 1000)
+    var questionTimerInterval = setInterval(function() {
+        quesTime--;
+        quesTimer.textContent = quesTime;
+        for(i = 1000; i < quizQuestions.length; i--) {
+            if(quesTime === 0) {
+                clearInterval(questionTimerInterval);
+                return;
+            }
+        }
+    }, 1000)
+};
+

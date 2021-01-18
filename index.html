@@ -14,20 +14,58 @@
     <!--Navbar with timer hidden, highscore link-->
     <header class="navbar navbar-light">
         <p id="high-score" class="navbar nav-item nav-link">View Highscores</p>
-        <div class="column" id="timer" style="visibility: hidden;">
-            <p id="timer-quiz" class="row">Time left on quiz: <span id="time-quiz"></span></p>
+        <div class="column" id="timer">
+            <p id="timer-quiz" class="row">Time left on quiz: <span id="time-quiz">0</span></p>
             <p id="timer-question" class="row">Time left on question: <span id="time-question"></span></p>
         </div>
         
     </header>
     <main>
         <!--start with directions-->
-        <section class="container">
-            <h1 id="question-ask">Challenge Questions</h1>
-            <p id="question-answer"> This is a JavaScript quiz. It contains 10 questions, multiple choice and input. Test your knowledge. Try to answer all questions in 5 minute. 30 seconds per question. Click start to begin.
+        <section class="container" id="starter">
+            <h1 id="start-header">Challenge Questions</h1>
+            <p id="start-p"> This is a JavaScript quiz. It contains 10 questions, multiple choice and input. Test your knowledge. Try to answer all questions in 5 minute. 30 seconds per question. Click start to begin.
             </p>
-            <button class="button" id="button" value="Button Text">Start Quiz</button>
+            <button class="button" id="start-button" value="Button Text">Start Quiz</button>
         </section>
+
+        <section class="card text-center" id="questions">
+            <article class="card-body">
+                <h1 class="card-title" id="question-ask">Question</h1>
+                <div class="question-btns" id="buttons-answer">
+                    <button class="question-btn button" id="choice1">Choice1</button> <br/>
+                    <button class="question-btn button" id="choice2">Choice2</button> <br/>
+                    <button class="question-btn button" id="choice3">Choice3</button> <br/>
+                    <button class="question-btn button" id="choice4">Choice4</button> <br/>
+                </div>
+            </article>
+            <article class="footer text-muted respond"></article>
+        </section>
+
+        <section class="card" id="results">
+            <article class="card-body">
+                <h1 class="card-title">Finished!</h1>
+                <p class="card-text" id="result-text"> You got <span id="userGotCorrect"></span> out of 10 questions correct.</p>
+                <p class="card-text" id="result-text"> Your final score is<span id="userScore">.</span></p>
+                <p class="card-text" id="result-text"> Enter your Initials: <input type="text" id="userInitials"> 
+                <button class="button" id="submit-button">Submit</button> 
+                </p>
+            </article>
+            <article class="footer text-muted respond"></article>
+        </section>
+        <section class="card" id="score">
+            <article class="card-body">
+                <h1 class="card-title">High Scores</h1>
+                <ol class="list" id="leaderboard"></ol>
+                <p>
+                    <button class="button" id="back">Go Back to Start</button>
+                    <button class="button" id="clear">Clear High Scores</button>
+                </p>
+            </article>
+
+            <article class="footer text-muted respond"></article>
+        </section>
+
 
        
 
