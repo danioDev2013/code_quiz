@@ -12,34 +12,42 @@
 
 <body>
     <!--Navbar with timer hidden, highscore link-->
-    <header class="navbar navbar-light">
-        <p id="high-score" class="navbar nav-item nav-link">View Highscores</p>
+    <nav class="navbar navbar-light">
+        <ul class="nav float-left">
+            <li class="nav-item">
+                <a class="nav-link active" id="high-score" href="">View High Score</a>
+            </li>
+        </ul>
         <div class="column" id="timer">
-            <p id="timer-quiz" class="row">Time left on quiz: <span id="time-quiz">0</span></p>
+            <p id="timer-quiz" class="row">Time left on quiz: <span id="time-quiz"></span></p>
             <p id="timer-question" class="row">Time left on question: <span id="time-question"></span></p>
         </div>
-        
-    </header>
+    </nav>
+
+    <hr id="hr">
+
     <main>
         <!--start with directions-->
         <section class="container" id="starter">
             <h1 id="start-header">Challenge Questions</h1>
             <p id="start-p"> This is a JavaScript quiz. It contains 10 questions, multiple choice and input. Test your knowledge. Try to answer all questions in 5 minute. 30 seconds per question. Click start to begin.
             </p>
-            <button class="button" id="start-button" value="Button Text">Start Quiz</button>
+            <button class="button buttonsCheck" id="start-button" value="Button Text">Start Quiz</button>
         </section>
 
         <section class="card text-center" id="questions">
             <article class="card-body">
                 <h1 class="card-title" id="question-ask">Question</h1>
-                <div class="question-btns" id="buttons-answer">
-                    <button class="question-btn button" id="choice1">Choice1</button> <br/>
-                    <button class="question-btn button" id="choice2">Choice2</button> <br/>
-                    <button class="question-btn button" id="choice3">Choice3</button> <br/>
-                    <button class="question-btn button" id="choice4">Choice4</button> <br/>
+                <div class="question-btns text-center" id="buttons-answer">
+                    <button class="question-btn button" id="choice1">Choice1</button> 
+                    <button class="question-btn button" id="choice2">Choice2</button> 
+                    <button class="question-btn button" id="choice3">Choice3</button> 
+                    <button class="question-btn button" id="choice4">Choice4</button> 
+                    <p id="answer">answer</p>
                 </div>
             </article>
             <article class="footer text-muted respond"></article>
+            <button class="button button-next">Next</button>
         </section>
 
         <section class="card" id="results">

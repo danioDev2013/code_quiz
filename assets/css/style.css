@@ -47,3 +47,9 @@ h1 {
   #timer {
       display: none;
   }
+  #answer {
+      
+  }
+  .button-next {
+      display: none;
+  }

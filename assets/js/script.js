@@ -1,161 +1,175 @@
 //questions
 var quizQuestions = [
     {
-        questions: "Which of the following is a Data Type?",
-        answers: {
-            a: 'object',
-            b: 'var',
-            c: 'function',
-            d: 'console'
-        },
-        correctAnswer: 'a'
+        "questions": "Which of the following is a Data Type?",
+            "choice1": "object",
+            "choice2": "var",
+            "choice3": "function",
+            "choice4": "console",
+            "correctAnswer": "object"
     },
     {
-        questions: "What are variables used for in JavaScript Programs?",
-        answers: {
-            a: 'to output your code in the console',
-            b: 'throws the code',
-            c: 'storing numbers, dates, or other values',
-            d: 'none of the above'
-        },
-        correctAnswer: 'c'
+        "questions": "What are variables used for in JavaScript Programs?",
+        "choice1": "to output your code in the console",
+        "choice2": "throws the code",
+        "choice3": "storing numbers, dates, or other values",
+        "choice4": "none of the above",
+        "correctAnswer": "storing numbers, dates, or other values"
     },
     {
-        questions: "What symbol is used for single line comments?",
-        answers: {
-            a: '$',
-            b: '//',
-            c: '/*',
-            d: '#'
-        },
-        correctAnswer: 'b'
+        "questions": "What symbol is used for single line comments?",
+            "choice1": "$",
+            "choice2": "//",
+            "choice3": "/*",
+            "choice4": "#",
+            "correctAnswer": "//"
     },
     {
-        questions: "What is the !== operator?",
-        answers: {
-            a: 'strict equality',
-            b: 'stop',
-            c: 'is not an operator',
-            d: 'strict inequality'
-        },
-        correctAnswer: 'd'
+        "questions": "What is the !== operator?",
+            "choice1": "strict equality",
+            "choice2": "stop",
+            "choice3": "is not an operator",
+            "choice4": "strict inequality",
+            "correctAnswer": "strict inequality"
     }, 
     {
-        questions: "What is the result of 6 + 2 + '7' ?",
-        answers: {
-            a: '8',
-            b: '87',
-            c: 'undefined',
-            d: '15'
-        },
-        correctAnswer: 'b'
+        "questions": "What is the result of 6 + 2 + '7' ?",
+            "choice1": "8",
+            "choice2": "87",
+            "choice3": "undefined",
+            "choice4": "15",
+            "correctAnswer": "87"
     }, 
     {
-        questions: "What is the pop() method?",
-        answers: {
-            a: 'pops the end of an array off and returns it',
-            b: 'pops the beginning of an array off and returns it',
-            c: 'pops the middle of an array off and returns it',
-            d: 'does nothing'
-        },
-        correctAnswer: 'a'
+        "questions": "What is the pop() method?",
+            "choice1": "pops the end of an array off and returns ",
+            "choice2": "pops the beginning of an array off and returns ",
+            "choice3": "pops the middle of an array off and returns ",
+            "choice4": "does nothing",
+            "correctAnswer": "pops the end of an array off and returns "
     }, 
     {
-        questions: "What does getElementById('idName') do?",
-        answers: {
-            a: 'only selects classnames',
-            b: 'Gets all the elements that have the given tag name',
-            c: 'Gets an element by its ID name',
-            d: 'nothing'
-        },
-        correctAnswer: 'c'
+        "questions": "What does querySelector('idName') do?",
+            "choice1": "only selects classname",
+            "choice2": "Gets all the elements that have the given tag name",
+            "choice3": "Gets an element by its ID name",
+            "choice4": "nothing",
+            "correctAnswer": "Gets an element by its ID name"
     }, 
     {
-        questions: "How do you define a variable?",
-        answers: {
-            a: 'var = ',
-            b: 'variable = ',
-            c: 'vari = ',
-            d: 'none of the above'
-        },
-        correctAnswer: 'a'
+        "questions": "How do you define a variable?",
+            "choice1": "var ",
+            "choice2": "variable ",
+            "choice3": "vari ",
+            "choice4": "none of the above",
+            "correctAnswer": "var"
     }, 
     {
-        questions: "What is the difference between let and var?",
-        answers: {
-            a: 'var is for variables,let is nothing',
-            b: 'var is for variable, let is for ouput',
-            c: 'var is function scoped, let is block scoped',
-            d: 'none of the above'
-        },
-        correctAnswer: 'c'
+        "questions": "What is the difference between let and var?",
+            "choice1": "var is for variables,let is nothing",
+            "choice2": "var is for variable, let is for output",
+            "choice3": "var is function scoped, let is block scope",
+            "choice4": "none of the above",
+            "correctAnswer": "var is function scoped, let is block scope"
     }, 
     {
-        questions: "Can you write a multi-line string in JavaScript?",
-        answers: {
-            a: 'Yes',
-            b: 'No',
-        },
-        correctAnswer: 'a'
+        "questions": "Can you write a multi-line string in JavaScript?",
+            "choice1": "Y",
+            "choice2": "n",
+        "correctAnswer": "y"
     }, 
 ]
 
+//variable declarations
+var startbutton = document.querySelector("#start-button");
+var starter = document.querySelector("#starter");
+var questions = document.querySelector("#questions");
+var results = document.querySelector("#results");
+var userCorrect = document.querySelector("#userGotCorrect");
+var userScore = document.querySelector("#userScore");
+var userInitials = document.querySelector("#userInitials");
+var submitBtn = document.querySelector("#submit-button");
+var score = document.querySelector("#score");
+var viewScores = document.querySelector("#high-score");
+var questionAsk = document.querySelector("#question-ask");
+var choice1 = document.querySelector("#choice1");
+var choice2 = document.querySelector("#choice2");
+var choice3 = document.querySelector("#choice3");
+var choice5 = document.querySelector("#choice4");
+var answer = document.querySelector("#answer");
+var buttonsAnswer = document.querySelector("#buttons-answer");
+var respond = document.querySelector(".respond");
+var timerDisplay = document.querySelector("#timer");
+var timeQuiz = document.querySelector("#time-quiz");
+var timeQuiz = document.querySelector("#time-question");
+var leaderBoard = document.querySelector("#leaderboard");
+var back = document.querySelector("#back");
+var clear = document.querySelector("#clear");
+var navbar = document.querySelector(".navbar");
+var hr = document.querySelector("#hr");
+var buttonsCheck = document.querySelector(".buttonsCheck")
 
-var highScore = document.querySelector('#high-score');
-var questionAsk = document.querySelector('#question');
-var answersQues = document.querySelector('#answer')
 
-var button = document.querySelector("#button");
+var next = document.querySelector(".button-next")
 
-
-var timers = document.querySelector('#timer');
-var isWin = false;
-var quizTime = 1000;
-var quesTime = 60;
-const  quizTimer = document.querySelector("#time-quiz");
-const quesTimer = document.querySelector("#time-question");
-var output = [];
 var i = 0;
+var guess;
+var correct = 0;
+var secondsLeft = 60;
+var TimeLeft = 600;
+var timerInterval;
+var highscores = [];
+var random = Math.floor(Math.random() * quizQuestions.length);
+var userInitials;
+var userScore
+ 
 
-button.addEventListener("click", startQuiz);
+//questions random
+function questionsAsked() {
 
-function startQuiz() {
-    //changes button to submit
-    document.getElementById("button").innerHTML = "Submit";
-    //document.getElementById("question-ask").innerHTML = "Question";
-    //timer is now visible
-    document.getElementById("timer").style.visibility = "visible";
+   if(i === quizQuestions.length) {
+       return;
+   }
+    questionAsk.textContent =  quizQuestions[random].questions;
+    choice1.textContent = quizQuestions[random].choice1;
+    choice2.textContent = quizQuestions[random].choice2;
+    choice3.textContent = quizQuestions[random].choice3;
+    choice4.textContent = quizQuestions[random].choice4;
+    answer.textContent = quizQuestions[random].correctAnswer;
 
-    startTimer();
-    questionRender();
 
+    buttonsAnswer.addEventListener("click", function (event) {
+        if(event.target.matches("button")){
+            event.preventDefault();
+            guess = event.target.innerHTML;
+            checkAnswer(guess);
+        }
+    })
+}
+
+//checks the users answer 
+function checkAnswer(guess) {
+    if(guess.includes(quizQuestions[random].correctAnswer)) {
+        respond.textContent = "Correct! Yay";
+        correct++;
+        i++;
+     questionsAsked();
+    } else {
+        respond.textContent= "Wrong!";
+        i++;
+        secondsLeft = secondsLeft - 5;
+       questionsAsked();
+    }
     
 }
 
-
-
-// The setTimer function starts and stops the timer
-function startTimer() {
-    // Sets timer
-    var quizTimerInterval = setInterval(function() {
-      quizTime--;
-      quizTimer.textContent = quizTime;
-      for(i = 1000; i < quizQuestions.length; i--) {
-          if(quizTime === 0) {
-              clearInterval(quizTimerInterval);
-              return;
-          }
-      }
-    }, 1000)
-    var questionTimerInterval = setInterval(function() {
-        quesTime--;
-        quesTimer.textContent = quesTime;
-        for(i = 1000; i < quizQuestions.length; i--) {
-            if(quesTime === 0) {
-                clearInterval(questionTimerInterval);
-                return;
-            }
-        }
-    }, 1000)
-};
+//when the start button is clicked
+startbutton.addEventListener("click", function (event) {
+    event.preventDefault();
+    questionsAsked()
+    starter.style.display = "none"
+    questions.style.display ="block";
+    //startTimer();
+    timerDisplay.style.display = secondsLeft;
+})
 
