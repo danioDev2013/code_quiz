@@ -1,4 +1,4 @@
-//questions
+ //questions array
 var quizQuestions = [
     {
         "questions": "Which of the following is a Data Type?",
@@ -62,7 +62,7 @@ var quizQuestions = [
             "choice2": "variable ",
             "choice3": "vari ",
             "choice4": "none of the above",
-            "correctAnswer": "var"
+            "correctAnswer": "var "
     }, 
     {
         "questions": "What is the difference between let and var?",
@@ -74,102 +74,99 @@ var quizQuestions = [
     }, 
     {
         "questions": "Can you write a multi-line string in JavaScript?",
-            "choice1": "Y",
-            "choice2": "n",
-        "correctAnswer": "y"
-    }, 
-]
+            "choice1": "Yes",
+            "choice2": "No",
+            "choice3": "this",
+            "choice4": "that",
+        "correctAnswer": "Yes"
+    },
+];
 
-//variable declarations
-var startbutton = document.querySelector("#start-button");
-var starter = document.querySelector("#starter");
-var questions = document.querySelector("#questions");
-var results = document.querySelector("#results");
-var userCorrect = document.querySelector("#userGotCorrect");
-var userScore = document.querySelector("#userScore");
-var userInitials = document.querySelector("#userInitials");
-var submitBtn = document.querySelector("#submit-button");
-var score = document.querySelector("#score");
-var viewScores = document.querySelector("#high-score");
-var questionAsk = document.querySelector("#question-ask");
+var startButton = document.querySelector("#startButton");
+var startArea = document.querySelector("#startArea");
+var questionAsk = document.querySelector("#questionAsk");
 var choice1 = document.querySelector("#choice1");
 var choice2 = document.querySelector("#choice2");
 var choice3 = document.querySelector("#choice3");
 var choice5 = document.querySelector("#choice4");
-var answer = document.querySelector("#answer");
-var buttonsAnswer = document.querySelector("#buttons-answer");
+var answerQuestion = document.querySelector("#answer");
+var buttons = document.querySelector("#buttonsAnswer");
 var respond = document.querySelector(".respond");
-var timerDisplay = document.querySelector("#timer");
-var timeQuiz = document.querySelector("#time-quiz");
-var timeQuiz = document.querySelector("#time-question");
-var leaderBoard = document.querySelector("#leaderboard");
-var back = document.querySelector("#back");
-var clear = document.querySelector("#clear");
-var navbar = document.querySelector(".navbar");
-var hr = document.querySelector("#hr");
-var buttonsCheck = document.querySelector(".buttonsCheck")
 
 
-var next = document.querySelector(".button-next")
 
+var chosenQuestion = "";
+var timeCounter = 0;
+var count = 0;
+var timer;
+var timerCount;
+var isWin = false;
 var i = 0;
-var guess;
-var correct = 0;
-var secondsLeft = 60;
-var TimeLeft = 600;
-var timerInterval;
-var highscores = [];
-var random = Math.floor(Math.random() * quizQuestions.length);
-var userInitials;
-var userScore
- 
 
-//questions random
-function questionsAsked() {
-
-   if(i === quizQuestions.length) {
-       return;
-   }
-    questionAsk.textContent =  quizQuestions[random].questions;
-    choice1.textContent = quizQuestions[random].choice1;
-    choice2.textContent = quizQuestions[random].choice2;
-    choice3.textContent = quizQuestions[random].choice3;
-    choice4.textContent = quizQuestions[random].choice4;
-    answer.textContent = quizQuestions[random].correctAnswer;
+var quesUp = [];
 
 
-    buttonsAnswer.addEventListener("click", function (event) {
-        if(event.target.matches("button")){
-            event.preventDefault();
-            guess = event.target.innerHTML;
-            checkAnswer(guess);
-        }
-    })
-}
-
-//checks the users answer 
-function checkAnswer(guess) {
-    if(guess.includes(quizQuestions[random].correctAnswer)) {
-        respond.textContent = "Correct! Yay";
-        correct++;
-        i++;
-     questionsAsked();
-    } else {
-        respond.textContent= "Wrong!";
-        i++;
-        secondsLeft = secondsLeft - 5;
-       questionsAsked();
-    }
-    
-}
-
-//when the start button is clicked
-startbutton.addEventListener("click", function (event) {
-    event.preventDefault();
-    questionsAsked()
-    starter.style.display = "none"
-    questions.style.display ="block";
+function quizPlay() {
+    //console.log(quizQuestions);
+    isWin = false;
+    timerCount = 60;
+    startArea.style.display= "none";
+    questions.style.display = "block";
+    console.log();
+    //renderQuestions();
     //startTimer();
-    timerDisplay.style.display = secondsLeft;
+    questionGen();
+}
+
+function questionGen() {
+    if(i === quizQuestions.length) {
+    return;
+    }
+    questionAsk.textContent =  quizQuestions[i].questions;
+    choice1.textContent = quizQuestions[i].choice1;
+    choice2.textContent = quizQuestions[i].choice2;
+    choice3.textContent = quizQuestions[i].choice3;
+    choice4.textContent = quizQuestions[i].choice4;
+    answerQuestion.textContent = quizQuestions[i].correctAnswer;
+}
+function checkAnswer() {
+   if(quizQuestions[i].correctAnswer === guess) {
+       respond.textContent = "Correct";
+       respondShow();
+       i++;
+       count++;
+       questionGen();
+   } else {
+      i++;
+      respond.textContent = "Wrong!";
+      console.log(respond);
+      respondShow();
+      questionGen();
+   }
+}
+
+function respondShow() {
+    respond.style.display = "block";
+    var respondCountdown = 1;
+    var timerRespond = setTimeout(function () {
+        respondCountdown--;
+        if(respondCountdown === 0);
+        clearInterval(timerRespond);
+        respond.style.display = "none";
+    }, 1000);
+}
+
+
+startButton.addEventListener("click", quizPlay);
+
+buttonsAnswer.addEventListener("click", function (event) {
+    if(event.target.matches("button")) {
+        guess = event.target.innerHTML;
+        console.log(guess);
+        checkAnswer();
+    }
 })
+
+
+
 

@@ -45,11 +45,13 @@ h1 {
     display: none;
   }
   #timer {
-      display: none;
   }
   #answer {
       
   }
   .button-next {
+      display: none;
+  }
+  .respond {
       display: none;
   }
