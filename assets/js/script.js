@@ -1,5 +1,5 @@
  //questions array
-var quizQuestions = [
+ var quizQuestions = [
     {
         "questions": "Which of the following is a Data Type?",
             "choice1": "object",
@@ -82,6 +82,7 @@ var quizQuestions = [
     },
 ];
 
+//variable declarations with html selectors
 var startButton = document.querySelector("#startButton");
 var startArea = document.querySelector("#startArea");
 var questionAsk = document.querySelector("#questionAsk");
@@ -101,17 +102,20 @@ var score = document.querySelector("#score");
 var results = document.querySelector("#results");
 var initials = document.querySelector("#userInitials");
 var leaderBoard = document.querySelector("#leaderBoard");
-var highScoreView = document.querySelector("#highScore");
+var highScoreView = document.querySelector("#highScoreView");
 var submitBtn = document.querySelector("#submitButton");
 var navbar = document.querySelector(".navbar");
 var goBackStart = document.querySelector("#back");
 var clearHighScore = document.querySelector("#clear")
 
 
+//variable declaration
 var guessCorrect = 0;
 var i = 0;
-var questionTime = 10;
+var questionTime = 30;
 var highScoreArr = [];
+var highScores = [];
+var newHighScores = [];
 var userInitials;
 var userScore;
 var scoreCorrect;
@@ -145,8 +149,8 @@ function checkAnswer() {
    } else {
       i++;
       respond.textContent = "Wrong!";
-      quizTime = questionTime - 10;
-      console.log(quizTime);
+      questionTime = questionTime - 10;
+      console.log(questionTime);
       respondShow();
       questionGen();
    }
@@ -181,18 +185,18 @@ function showFinal() {
     questions.style.display = "none";
     results.style.display = "block";
     correct.textContent = guessCorrect;
-    scoreCorrect = (guessCorrect / 10) * 100;
-    userScore.textContent = " " + scoreCorrect + "%";
+    scoreCorrect = (guessCorrect / 10) * 100 + "%";
+    userScore.textContent = " " + scoreCorrect;
 }
 
 function getScore() {
-    highScores = JSON.parse(localStorage.getItem("highScores"));
-    console.log(highScores);
-    if(!highScores) {
-        highScores = [];
-        return(highScores);
+    highScoreArr = JSON.parse(localStorage.getItem("highScores"));
+    console.log(highScoreArr);
+    if(!highScoreArr) {
+        highScoreArr = [];
+        return(highScoreArr);
     } else {
-        return(highScores);
+        return(highScoreArr);
     }
 }
 
@@ -201,12 +205,13 @@ function showScore() {
     score.style.display = "block";
     questionTimeElement.style.display = "none";
     navbar.style.display = "none";
+    leaderBoard.innerHTML = "";
     getScore();
     for(var s = 0; s < highScoreArr.length; s++) {
+        var scoreEntry = document.createElement("li");
+        scoreEntry.setAttribute("class", "highScoresArr");
         var scoreInitials = highScoreArr[s].initials;
         var scoreSave = highScoreArr[s].score;
-        var scoreEntry = document.createElement("li");
-        scoreEntry.setAttribute("class", "score");
         scoreEntry.textContent = scoreInitials + " - " + scoreSave;
         leaderBoard.appendChild(scoreEntry);
     }
@@ -229,7 +234,11 @@ buttonsAnswer.addEventListener("click", function (event) {
         guess = event.target.innerHTML;
         console.log(guess);
         clearInterval(questionTimer);
-        questionTime = 60;
+        if(!quizQuestions[i].correctAnswer === guess) {
+            questionTime = 20;
+        } else {
+           questionTime = 30;
+        }
         startTimer();
         checkAnswer();
     }
@@ -246,7 +255,7 @@ submitBtn.addEventListener("click", function(event) {
     console.log(scoreCorrect);
     var newUserScore = {"initials": userInitials, "score": scoreCorrect};
     highScoreArr.push(newUserScore);
-    console.log(highScoreArr);
+    console.log(highScores);
     localStorage.setItem("highScores", JSON.stringify(highScoreArr));
     showScore();
 })
@@ -270,6 +279,3 @@ clearHighScore.addEventListener("click", function(event) {
         leaderBoard.removeChild(leaderBoard.lastChild);
     }
 })
-
-
-

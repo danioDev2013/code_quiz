@@ -46,7 +46,8 @@ h1 {
   }
  #questionTime,
  #quizTime,
- #timer{
+ #timer,
+ #high-scores{
      display: none;
  }
  

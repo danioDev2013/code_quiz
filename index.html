@@ -15,7 +15,7 @@
     <nav class="navbar navbar-light">
         <ul class="nav float-left">
             <li class="nav-item">
-                <a class="nav-link active" id="highScore" href="">View High Score</a>
+                <a class="nav-link active" id="highScoreView" href="">View High Score</a>
             </li>
         </ul>
         <div class="column" id="timer">
@@ -61,12 +61,16 @@
         </section>
         <section class="card" id="score">
             <article class="card-body">
-                <h1 class="card-title">High Scores</h1>
+                <h1 class="card-title">High Score</h1>
                 <ol class="list" id="leaderBoard"></ol>
                 <p>
                     <button class="button" id="back">Go Back to Start</button>
                     <button class="button" id="clear">Clear High Scores</button>
                 </p>
+            </article>
+            <article class="card" id="high-scores">
+                <h1 class="card-title">High Scores</h1>
+                <ol class="list" id="leaderBoardDone"></ol>
             </article>
 
             <article class="footer text-muted respond"></article>
