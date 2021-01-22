@@ -120,7 +120,7 @@ var newHighScores = [];
 var userInitials;
 var userScore;
 var scoreCorrect;
-var wrongAnswers = []
+var wrongAnswers = [];
 
 
 
@@ -165,6 +165,7 @@ function checkAnswer() {
       questionTime = 20;
    }
 }
+
 //this is a timeout for the wrong or correct shown
 function respondShow() {
     respond.style.display = "block";
@@ -176,6 +177,7 @@ function respondShow() {
         respond.style.display = "none";
     }, 1000);
 }
+
 //start timer function, ticks down on each question
 function startTimer() {
     questionTimeElement.style.display = "block";
@@ -188,6 +190,7 @@ function startTimer() {
         }
     }, 1000);
 }
+
 //this is to show the final score for user before highscores screen
 function showFinal() {
     clearInterval(questionTimer);
@@ -198,8 +201,23 @@ function showFinal() {
     correct.textContent = guessCorrect;
     scoreCorrect = (guessCorrect / 10) * 100 + "%";
     userScore.textContent = " " + scoreCorrect;
+    showCorrect();
 
 }
+function showCorrect() {
+    console.log(wrongAnswers);
+    wrongAnswers = wrongAnswers;
+    correctAnswersBoard.innerHTML = "";
+    for(var c = 0; c < wrongAnswers.length; c++){
+        var wrongAnsL = document.createElement("li");
+        wrongAnsL.setAttribute("class", "wrongAnswers");
+        var saveWrong = wrongAnswers[c];
+        wrongAnsL.textContent = saveWrong;
+        correctAnswersBoard.appendChild(wrongAnsL);
+    }
+
+}
+
 //gets the score from local storage
 function getScore() {
     highScoreArr = JSON.parse(localStorage.getItem("highScores"));
@@ -237,8 +255,8 @@ startButton.addEventListener("click", function(event) {
     questions.style.display = "block";
     timerShow.style.display = "block";
     getScore();
-    questionGen();
     startTimer();
+    questionGen();
 }) 
 
 //the buttons for quiz listner
