@@ -73,12 +73,12 @@
             "correctAnswer": "var is function scoped, let is block scope"
     }, 
     {
-        "questions": "Can you write a multi-line string in JavaScript?",
-            "choice1": "Yes",
-            "choice2": "No",
-            "choice3": "this",
-            "choice4": "that",
-        "correctAnswer": "Yes"
+        "questions": "How do you create an array?",
+            "choice1": "var = [];",
+            "choice2": "var = {};",
+            "choice3": "var = q;",
+            "choice4": "none of the above",
+        "correctAnswer": "var = [];"
     },
 ];
 
@@ -106,31 +106,34 @@ var highScoreView = document.querySelector("#highScoreView");
 var submitBtn = document.querySelector("#submitButton");
 var navbar = document.querySelector(".navbar");
 var goBackStart = document.querySelector("#back");
-var clearHighScore = document.querySelector("#clear")
+var clearHighScore = document.querySelector("#clear");
+var correctAnswersBoard = document.querySelector("#correctAnswersBoard");
 
 
-//variable declaration
+//variables
 var guessCorrect = 0;
 var i = 0;
-var questionTime = 30;
+var questionTime = 31;
 var highScoreArr = [];
 var highScores = [];
 var newHighScores = [];
 var userInitials;
 var userScore;
 var scoreCorrect;
+var wrongAnswers = []
 
 
 
-
-
+//question generator
 function questionGen() {
+    //stops once hits end of the quiz 10
     if(i === quizQuestions.length) {
         showFinal();
         clearInterval(questionTimer);
         return;
     }
 
+    //goes through the questions and answers pulling from the question array
     questionAsk.textContent =  quizQuestions[i].questions;
     choice1.textContent = quizQuestions[i].choice1;
     choice2.textContent = quizQuestions[i].choice2;
@@ -138,24 +141,31 @@ function questionGen() {
     choice4.textContent = quizQuestions[i].choice4;
     answerQuestion.textContent = quizQuestions[i].correctAnswer;
 }
-
+//function to check the answer
 function checkAnswer() {
+    //if correct then adds to guess correct to keep score
    if(quizQuestions[i].correctAnswer === guess) {
        respond.textContent = "Correct";
        respondShow();
        i++;
        guessCorrect++;
        questionGen();
-   } else {
+       questionTime = 30;
+   } //if not wrong
+   else {
       i++;
       respond.textContent = "Wrong!";
-      questionTime = questionTime - 10;
+      if(i < quizQuestions.length){
+        wrongAnswers.push(quizQuestions[i].questions + quizQuestions[i].correctAnswer);
+      }
+      console.log(wrongAnswers);
       console.log(questionTime);
       respondShow();
       questionGen();
+      questionTime = 20;
    }
 }
-
+//this is a timeout for the wrong or correct shown
 function respondShow() {
     respond.style.display = "block";
     var respondCountdown = 1;
@@ -166,7 +176,7 @@ function respondShow() {
         respond.style.display = "none";
     }, 1000);
 }
-
+//start timer function, ticks down on each question
 function startTimer() {
     questionTimeElement.style.display = "block";
     questionTimer = setInterval(function () {
@@ -178,17 +188,19 @@ function startTimer() {
         }
     }, 1000);
 }
-
+//this is to show the final score for user before highscores screen
 function showFinal() {
     clearInterval(questionTimer);
     questionTimeElement.style.display = "none";
+    timerShow.style.display = "none";
     questions.style.display = "none";
     results.style.display = "block";
     correct.textContent = guessCorrect;
     scoreCorrect = (guessCorrect / 10) * 100 + "%";
     userScore.textContent = " " + scoreCorrect;
-}
 
+}
+//gets the score from local storage
 function getScore() {
     highScoreArr = JSON.parse(localStorage.getItem("highScores"));
     console.log(highScoreArr);
@@ -199,7 +211,7 @@ function getScore() {
         return(highScoreArr);
     }
 }
-
+//shows the score when called, used for the highscore screen, adds a list
 function showScore() {
     results.style.display = "none";
     score.style.display = "block";
@@ -218,7 +230,7 @@ function showScore() {
 
 };
 
-
+//start button listner
 startButton.addEventListener("click", function(event) {
     event.preventDefault();
     startArea.style.display= "none";
@@ -229,21 +241,17 @@ startButton.addEventListener("click", function(event) {
     startTimer();
 }) 
 
+//the buttons for quiz listner
 buttonsAnswer.addEventListener("click", function (event) {
     if(event.target.matches("button")) {
         guess = event.target.innerHTML;
-        console.log(guess);
+        //console.log(guess);
         clearInterval(questionTimer);
-        if(!quizQuestions[i].correctAnswer === guess) {
-            questionTime = 20;
-        } else {
-           questionTime = 30;
-        }
         startTimer();
         checkAnswer();
     }
 })
-
+//initials submit listner, saves to local storage
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
     userInitials = initials.value.trim();
@@ -255,23 +263,27 @@ submitBtn.addEventListener("click", function(event) {
     console.log(scoreCorrect);
     var newUserScore = {"initials": userInitials, "score": scoreCorrect};
     highScoreArr.push(newUserScore);
-    console.log(highScores);
     localStorage.setItem("highScores", JSON.stringify(highScoreArr));
     showScore();
 })
 
-
+//if highscore view is clicked
 highScoreView.addEventListener("click", function(event) {
     event.preventDefault();
     startArea.style.display = "none";
+    questionTimeElement.style.display = "none";
+    questions.style.display = "none";
+    questionAsk
     showScore();
 })
 
+//back to start listner, on high scores screen
 goBackStart.addEventListener("click", function(event) {
     event.preventDefault();
     window.location.reload();
 })
 
+//clears scores listner, on high scores screen
 clearHighScore.addEventListener("click", function(event) {
     event.preventDefault();
     localStorage.removeItem("highScores");

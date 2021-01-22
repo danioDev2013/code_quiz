@@ -5,8 +5,10 @@
     transition: 0.3s;
     width: 60vw;
 }
-#high-score,
-#timer {
+
+#highScoreView,
+#timer,
+#hScoreFont {
     color: rgb(55, 18, 88);
     font-weight: bold;
     padding: 0 10px 0 0;
@@ -15,8 +17,8 @@
 h1 {
     font-weight: bold;
 }
-.button,
-.submit-button {
+
+.button {
     background: radial-gradient(circle, rgb(107, 80, 182) 0%, rgba(55, 18, 88, 0.954) 100%);
     border-radius: 8px;
     color: hsl(210, 14%, 95%);
@@ -31,35 +33,19 @@ h1 {
     margin-top: 0.6em;
   }
 
-  #questions {
+  #questions,
+  #results,
+  #score,
+  #timer,
+  #questions,
+  #answer,
+  .respond {
       display: none;
   }
   .question-btns {
       text-align: left;
   }
 
-  #results {
-      display: none;
-  }
-  #score {
-    display: none;
-  }
- #questionTime,
- #quizTime,
- #timer,
- #high-scores{
-     display: none;
- }
- 
-  #answer {
-      display: none;
-  }
-  .button-next {
-      display: none;
-  }
-  .respond {
-      display: none;
-  }
   .navbar, 
   .bottom {
       border-bottom: 1px solid rgb(197, 167, 211);

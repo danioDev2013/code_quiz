@@ -15,9 +15,11 @@
     <nav class="navbar navbar-light">
         <ul class="nav float-left">
             <li class="nav-item">
+                <!--link with highscoreview-->
                 <a class="nav-link active" id="highScoreView" href="">View High Score</a>
             </li>
         </ul>
+        <!--question timer-->
         <div class="column" id="timer">
             <p id="timer-question" class="row">Time left on question: <span id="questionTime"></span></p>
         </div>
@@ -26,29 +28,38 @@
     
 
     <main class="bottom">
-        <!--start with directions-->
+        <!--starting area, button for start quiz, and directions-->
         <section class="container" id="startArea">
-            <h1 id="start-header">Challenge Questions</h1>
-            <p id="start-p"> This is a JavaScript quiz. It contains 10 questions, multiple choice and input. Test your knowledge. Try to answer all questions in 5 minute. 30 seconds per question. Click start to begin.
+            <h1 id="start-header">JavaScript Quiz</h1>
+            <p id="start-p"> Test your knowledge. It contains 10 questions. Answer the questions in 30 seconds
+                or less. If you don't answer in 30 seconds, then times up and you don't get to continue. If you get it wrong time
+                is subtracted from you answering your next question. Click start quiz to begin.
             </p>
             <button class="button buttonsCheck" id="startButton">Start Quiz</button>
         </section>
 
+        <!--questions card, hidden until start is clicked-->
         <section class="card text-center" id="questions">
             <article class="card-body">
+                <!--this is where the question will show up-->
                 <h1 class="card-title" id="questionAsk">Question</h1>
+                <!--this is the area where the buttons are located for choices-->
                 <div class="question-btns text-center" id="buttonsAnswer">
                     <button class="question-btn button" id="choice1">Choice1</button> 
                     <button class="question-btn button" id="choice2">Choice2</button> 
                     <button class="question-btn button" id="choice3">Choice3</button> 
                     <button class="question-btn button" id="choice4">Choice4</button> 
+                    <!--answer is hidden, used to check questions-->
                     <p id="answer">answer</p>
                 </div>
             </article>
+            <!--hidden until the answer is checked then correct, or wrong will show-->
             <article class="footer text-muted respond"></article>
         </section>
 
+        <!--Results area, hidden until quiz is done.-->
         <section class="card" id="results">
+            <!--tells them the results the received-->
             <article class="card-body">
                 <h1 class="card-title">Finished!</h1>
                 <p class="card-text" id="result-text"> You got <span id="userGotCorrect"></span> out of 10 questions correct.</p>
@@ -57,29 +68,27 @@
                 <button class="button" id="submitButton">Submit</button> 
                 </p>
             </article>
+            <article class="card-body">
+                <h1 class="card-title">Correct Answers</h1>
+                <ol class="list" id="correctAnswersBoard"></ol>
+                </p>
+            </article>
             <article class="footer respond"></article>
         </section>
+        <!--score area, where the high scores are-->
         <section class="card" id="score">
             <article class="card-body">
-                <h1 class="card-title">High Score</h1>
+                <h1 class="card-title" id="hScoreFont">High Scores</h1>
                 <ol class="list" id="leaderBoard"></ol>
                 <p>
+                    <!--clear and back to start buttons-->
                     <button class="button" id="back">Go Back to Start</button>
                     <button class="button" id="clear">Clear High Scores</button>
                 </p>
             </article>
-            <article class="card" id="high-scores">
-                <h1 class="card-title">High Scores</h1>
-                <ol class="list" id="leaderBoardDone"></ol>
-            </article>
-
+            
             <article class="footer text-muted respond"></article>
         </section>
-
-
-       
-
-
     </main>
     <!--link to js-->
     <script src="assets/js/script.js"></script>
